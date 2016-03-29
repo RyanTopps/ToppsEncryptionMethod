@@ -16,34 +16,34 @@ CTEM Process:
 
 Key Selection:
 
-  Key1 -> Random choice of AES-128, AES-192, AES-256, or TDES generation
-    
-  IV1 -> Randomly generated
-    
-  Key2 -> Random choice of AES-128, AES-192, AES-256, or TDES generation
+    Key1 -> Random choice of AES-128, AES-192, AES-256, or TDES generation
+      
+    IV1 -> Randomly generated
+      
+    Key2 -> Random choice of AES-128, AES-192, AES-256, or TDES generation
 
 Key Structure:
 
-  Length of Key1 in bytes (single byte) + Key1, Length of Key2 in bytes(single byte) + Key2, IV2
+    Length of Key1 in bytes (single byte) + Key1, Length of Key2 in bytes(single byte) + Key2, IV2
 
 Encryption:
 
-  Plaintext -> Encrypted with Key1, IV1 -> Ciphertext1
-
-  IV1(in front) + Ciphertext2 -> Ciphertext2
-
-  Ciphertext2 -> Encrypted with Key2, IV2 -> Final Ciphertext
+    Plaintext -> Encrypted with Key1, IV1 -> Ciphertext1
+  
+    IV1(in front) + Ciphertext2 -> Ciphertext2
+  
+    Ciphertext2 -> Encrypted with Key2, IV2 -> Final Ciphertext
 
 
 Decryption:
 
-  Read in Key1, Key2, IV2
-
-  Final Ciphertext -> Decrypted with Key2, IV2 -> IV1(in front) + Ciphertext1
-
-  Read in IV1 from infront of Ciphertext1, then Amend Message
-
-  Ciphertext1 -> Decrypt with Key1, IV1 -> Plaintext
+    Read in Key1, Key2, IV2
+  
+    Final Ciphertext -> Decrypted with Key2, IV2 -> IV1(in front) + Ciphertext1
+  
+    Read in IV1 from infront of Ciphertext1, then Amend Message
+  
+    Ciphertext1 -> Decrypt with Key1, IV1 -> Plaintext
 
 
 NOTES for CTEM:
@@ -86,7 +86,7 @@ Key Selection:
     
     Key2 -> Random choice of AES-128, AES-192, AES-256, or TDES generation
   
-  During Encryption
+  During Encryption:
   
     Embedded Bytes -> Two bytes randomly Selected
     
@@ -96,21 +96,21 @@ Key Selection:
 
 Encryption:
 
-  Plaintext -> Encrypted with Key1, IV1 -> Ciphertext1
-  
-  Ciphertext1 -> Embed Bytes at random interval(Count all the bytes embedded) -> Embedded Chiphertext1
-  
-  Embedded Chiphertext1 -> Encrypted with Key2, IV2 -> Final Ciphertext
+    Plaintext -> Encrypted with Key1, IV1 -> Ciphertext1
+    
+    Ciphertext1 -> Embed Bytes at random interval(Count all the bytes embedded) -> Embedded Chiphertext1
+    
+    Embedded Chiphertext1 -> Encrypted with Key2, IV2 -> Final Ciphertext
 
 Decryption:
 
-  Read in Key1, IV1, Key2, IV2, Embedded Bytes, Embedded Interval, Total Markers (Yes the key is that order)
-  
-  Final Ciphertext -> Decrypted with Key2, IV2 -> Embedded Ciphertext1
-  
-  Embedded Ciphertext1 -> Search for Embedded bytes until all are found -> Amend Ciphertext1 to pre-embedded form
-  
-  Ciphertext1 -> Decrypt with Key1, IV1 -> Plaintext
+    Read in Key1, IV1, Key2, IV2, Embedded Bytes, Embedded Interval, Total Markers (Yes the key is that order)
+    
+    Final Ciphertext -> Decrypted with Key2, IV2 -> Embedded Ciphertext1
+    
+    Embedded Ciphertext1 -> Search for Embedded bytes until all are found -> Amend Ciphertext1 to pre-embedded form
+    
+    Ciphertext1 -> Decrypt with Key1, IV1 -> Plaintext
 
 NOTES for OTEM:
 TDES has an extra parity byte due the fact that both AES-192 and TDES have same key length of 24 bytes(192-bit)
@@ -122,25 +122,25 @@ I have made a little example solution with a class that contains both methods an
 
 PUBLIC:
 
-  byte[] CTEMKey;
-  
-  byte[] OTEMKey;
-  
-  public void CTEM_KeyGen()
-  
-  public void CTEM_Encrypt(string MessageLocation, string OutputFile)
-  
-  public void CTEM_Decrypt(string MessageLocation, string OutputFile)
-  
-  public void OTEM_Encrypt(string Message_Location, string OutputFile)
-  
-  public void OTEM_Decrypt(string MessageLocation, string OutputFileLocation)
+    byte[] CTEMKey;
+    
+    byte[] OTEMKey;
+    
+    public void CTEM_KeyGen()
+    
+    public void CTEM_Encrypt(string MessageLocation, string OutputFile)
+    
+    public void CTEM_Decrypt(string MessageLocation, string OutputFile)
+    
+    public void OTEM_Encrypt(string Message_Location, string OutputFile)
+    
+    public void OTEM_Decrypt(string MessageLocation, string OutputFileLocation)
 
 PRIVATE:
 
-  private byte[] Encrypt(byte[] Data, byte[] key, byte[] IV, int Type, int mode) Used for AES/TDES encryption
-  
-  private byte[] Decrypt(byte[] Data, byte[] key, byte[] IV, int Type, int mode) Used for AES/TDES decryption
+    private byte[] Encrypt(byte[] Data, byte[] key, byte[] IV, int Type, int mode) Used for AES/TDES encryption
+    
+    private byte[] Decrypt(byte[] Data, byte[] key, byte[] IV, int Type, int mode) Used for AES/TDES decryption
 
 NOTES about C# demo:
 Demo is limited to data sizes of a byte array in Visual Studio(approx 2GB).
