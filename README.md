@@ -65,14 +65,14 @@ Therefore four total embedded bytes are inserted or two charcters.
 Ok lets look at a quick example before you complain your head hurts.
 
 EX:
-"My dog loves you" The message between the "" is 16 characters (Yes I actaully counted...)
-Lets chose the two embedded btyes to be an "E" charcter. (You choose whatever the encoding you want, I used UTF-8)
-Also lets make the embedded interval to be 10.
-
-So lets just say that when "My dog loves you." is encrypted first and somehow comes out to be "My cat hates you"
-The next step would be to embed the character E every 10 characters.
+        "My dog loves you" The message between the "" is 16 characters (Yes I actaully counted...)
+        Lets chose the two embedded btyes to be an "E" charcter. (You choose whatever the encoding you want, I used UTF-8)
+        Also lets make the embedded interval to be 10.
+        
+        So lets just say that when "My dog loves you." is encrypted first and somehow comes out to be "My cat hates you"
+        The next step would be to embed the character E every 10 characters.
         The result is "My cat hatEes you    E"
-This is then encrypted with the second key like CTEM.
+        This is then encrypted with the second key like CTEM.
 
 OTEM Process:
 
