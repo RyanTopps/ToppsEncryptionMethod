@@ -65,6 +65,7 @@ Therefore four total embedded bytes are inserted or two charcters.
 Ok lets look at a quick example before you complain your head hurts.
 
 EX:
+
         "My dog loves you" The message between the "" is 16 characters (Yes I actaully counted...)
         Lets chose the two embedded btyes to be an "E" charcter. (You choose whatever the encoding you want, I used UTF-8)
         Also lets make the embedded interval to be 10.
