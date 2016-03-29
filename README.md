@@ -68,7 +68,6 @@ EX:
         "My dog loves you" The message between the "" is 16 characters (Yes I actaully counted...)
         Lets chose the two embedded btyes to be an "E" charcter. (You choose whatever the encoding you want, I used UTF-8)
         Also lets make the embedded interval to be 10.
-        
         So lets just say that when "My dog loves you." is encrypted first and somehow comes out to be "My cat hates you"
         The next step would be to embed the character E every 10 characters.
         The result is "My cat hatEes you    E"
