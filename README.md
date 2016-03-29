@@ -13,24 +13,38 @@ To futher frustrate the proccess of guessing the key, the sixteen possible pairi
 This also creates a problem for attackers as if they guess the wrong pairing then even a brute force attack on that particular pairing type would never work.
 
 CTEM Process:
+
 Key Selection:
+
 Key1 -> Random choice of AES-128, AES-192, AES-256, or TDES generation
+
 IV1 -> Randomly generated
+
 Key2 -> Random choice of AES-128, AES-192, AES-256, or TDES generation
 
 Key Structure:
+
 Length of Key1 in bytes (single byte) + Key1, Length of Key2 in bytes(single byte) + Key2, IV2
 
 Encryption:
+
 Plaintext -> Encrypted with Key1, IV1 -> Ciphertext1
+
 IV1(in front) + Ciphertext2 -> Ciphertext2
+
 Ciphertext2 -> Encrypted with Key2, IV2 -> Final Ciphertext
 
+
 Decryption:
+
 Read in Key1, Key2, IV2
+
 Final Ciphertext -> Decrypted with Key2, IV2 -> IV1(in front) + Ciphertext1
+
 Read in IV1 from infront of Ciphertext1, then Amend Message
+
 Ciphertext1 -> Decrypt with Key1, IV1 -> Plaintext
+
 
 NOTES for CTEM:
 TDES has an extra parity byte due the fact that both AES-192 and TDES have same key length of 24 bytes(192-bit)
@@ -87,18 +101,30 @@ TDES has an extra parity byte due the fact that both AES-192 and TDES have same 
 The exta parity bit also allow for determination of whether IV should be 64-bit(TDES) or 128-bit(AES)
 
 C# Class:
+
 I have made a little example solution with a class that contains both methods and their member functions
+
 PUBLIC:
+
 byte[] CTEMKey;
+
 byte[] OTEMKey;
+
 public void CTEM_KeyGen()
+
 public void CTEM_Encrypt(string MessageLocation, string OutputFile)
+
 public void CTEM_Decrypt(string MessageLocation, string OutputFile)
+
 public void OTEM_Encrypt(string Message_Location, string OutputFile)
+
 public void OTEM_Decrypt(string MessageLocation, string OutputFileLocation)
 
+
 PRIVATE:
+
 private byte[] Encrypt(byte[] Data, byte[] key, byte[] IV, int Type, int mode) Used for AES/TDES encryption
+
 private byte[] Decrypt(byte[] Data, byte[] key, byte[] IV, int Type, int mode) Used for AES/TDES decryption
 
 NOTES about C# demo:
