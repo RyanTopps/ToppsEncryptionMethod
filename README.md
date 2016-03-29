@@ -71,7 +71,7 @@ Also lets make the embedded interval to be 10.
 
 So lets just say that when "My dog loves you." is encrypted first and somehow comes out to be "My cat hates you"
 The next step would be to embed the character E every 10 characters.
-The result is "My cat hatEes you    E"
+        The result is "My cat hatEes you    E"
 This is then encrypted with the second key like CTEM.
 
 OTEM Process:
