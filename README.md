@@ -17,9 +17,9 @@ CTEM Process:
 Key Selection:
 
   Key1 -> Random choice of AES-128, AES-192, AES-256, or TDES generation
-  
+    
   IV1 -> Randomly generated
-  
+    
   Key2 -> Random choice of AES-128, AES-192, AES-256, or TDES generation
 
 Key Structure:
@@ -28,7 +28,7 @@ Key Structure:
 
 Encryption:
 
-    Plaintext -> Encrypted with Key1, IV1 -> Ciphertext1
+  Plaintext -> Encrypted with Key1, IV1 -> Ciphertext1
 
   IV1(in front) + Ciphertext2 -> Ciphertext2
 
