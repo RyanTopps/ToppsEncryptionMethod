@@ -87,7 +87,7 @@ TDES has an extra parity byte due the fact that both AES-192 and TDES have same 
 The exta parity bit also allow for determination of whether IV should be 64-bit(TDES) or 128-bit(AES)
 
 C# Class:
-I have made a little example solution with contains both methods and their member functions
+I have made a little example solution with a class that contains both methods and their member functions
 PUBLIC:
 byte[] CTEMKey;
 byte[] OTEMKey;
@@ -100,3 +100,8 @@ public void OTEM_Decrypt(string MessageLocation, string OutputFileLocation)
 PRIVATE:
 private byte[] Encrypt(byte[] Data, byte[] key, byte[] IV, int Type, int mode) Used for AES/TDES encryption
 private byte[] Decrypt(byte[] Data, byte[] key, byte[] IV, int Type, int mode) Used for AES/TDES decryption
+
+NOTES about C# demo:
+Demo is limited to data sizes of a byte array in Visual Studio(approx 2GB).
+CTEM's and OTEM's encrypt should be modified to read in chunks of the data to encrypt if the implmentation is to be used with larger files.
+I will get around to commenting the code for OTEM when i get a chance.
